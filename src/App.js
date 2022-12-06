@@ -20,6 +20,7 @@ function App() {
                     </div>
                 }/>
                 <Route path='/' element={<HomePage/>}/>
+                {/*<Route path='/imgConverter' element={<HomePage/>}/>*/}
             </Routes>
         </Router>
     );
