@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
-import {Backdrop, Button, CircularProgress, Grid} from "@mui/material";
+import {Backdrop, Button, CircularProgress, Grid, Chip, Stack,} from "@mui/material";
 import {AspectRatio, Card, Textarea} from "@mui/joy";
 import api from "../../utils/axiosSetting";
 import Box from "@mui/material/Box";
+import './textToImg.scss'
+import textToImgEx from "../../utils/examples/textToImgEx";
+import Typography from "@mui/material/Typography";
 
 const TextToImg = () => {
     const [text, setText] = useState("");
@@ -45,6 +48,10 @@ const TextToImg = () => {
         element.click();
     }
 
+    const handleClick = async (text) => {
+        setText(text)
+    }
+
     console.log(images)
 
     return (
@@ -69,11 +76,26 @@ const TextToImg = () => {
             <Grid item display='flex' gap={3}>
                 {
                     !images && <Box sx={{
-                        width: '100%', height: '70vh', mt: 3,
+                        width: '100%', height: '70vh', mt: 3, flexDirection: 'column',
                         border: '5px solid #808080', borderRadius: '15px',
                         display: 'flex', justifyContent: 'center', alignItems: 'center'
                     }}>
-                        Images will be shown here
+                        <Typography variant={"h4"} mb={6}>
+                            Your description will be converted to image here
+                        </Typography>
+                        <Typography variant={"h5"}>Use the example below to get started</Typography>
+                        <Grid item direction="row" spacing={1} sx={{
+                            display: 'flex', justifyContent: 'center',
+                            alignItems: 'center', mt: 2, flexWrap: 'wrap'
+                        }}>
+                            {
+                                textToImgEx?.map((text, index) => (
+                                    <Chip label={text} variant="outlined"
+                                          key={index} onClick={e=>handleClick(text)}
+                                            sx={{margin: '5px'}}/>
+                                ))
+                            }
+                        </Grid>
                     </Box>
                 }
                 {
