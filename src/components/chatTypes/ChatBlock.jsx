@@ -5,7 +5,7 @@ import '../../pages/chatpage/chatPage.scss'
 
 const ChatBlock = ({isAi, value, uniqueId}) => {
     return (
-        <div className="wrapper ${isAi && 'ai'}">
+        <div className={`wrapper ${isAi && 'ai'}`}>
             <div className="chat">
                 <div className="profile">
                     <img

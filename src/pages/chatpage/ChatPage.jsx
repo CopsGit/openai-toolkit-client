@@ -7,7 +7,6 @@ const ChatPage = () => {
     return (
         <Layout>
             <div id="app">
-                <div id="chat_container"></div>
                 <BasicChat/>
             </div>
         </Layout>
