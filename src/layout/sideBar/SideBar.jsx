@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -18,6 +18,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import {useDispatch} from "react-redux";
+import {saveCurFeature} from "../../redux/slice/pageSlice";
 
 const drawerWidth = 240;
 
@@ -87,9 +89,11 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 
-const SideBar = ({page}) => {
+const SideBar = ({page, features}) => {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+    const [heading, setHeading] = useState(features[0]);
+    const dispatch = useDispatch();
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -117,7 +121,7 @@ const SideBar = ({page}) => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        Mini variant drawer
+                        {heading}
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -129,9 +133,12 @@ const SideBar = ({page}) => {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                    {features?.map((text, index) => (
                         <ListItem key={text} disablePadding sx={{ display: 'block' }}>
                             <ListItemButton
+                                onClick={e=>{
+                                    dispatch(saveCurFeature(text));
+                                }}
                                 sx={{
                                     minHeight: 48,
                                     justifyContent: open ? 'initial' : 'center',

@@ -5,7 +5,7 @@ import ImageVariation from "../../components/imgVariation/ImageVariation";
 
 const HomePage = () => {
     return (
-        <Layout>
+        <Layout features={["Home"]}>
             <ImageVariation />
         </Layout>
     );

@@ -9,13 +9,11 @@ const TopComponent = styled(Box)(({theme}) => ({
     position: 'relative'
 }))
 
-const Layout = ({children}) => {
+const Layout = ({children, features}) => {
     return (
         <TopComponent>
             <Header />
-            {/*<Box sx={{display: 'flex'}}>*/}
-                <SideBar page={children}/>
-            {/*</Box>*/}
+                <SideBar page={children} features={features}/>
             <Footer />
         </TopComponent>
     )

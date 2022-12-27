@@ -1,10 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
-    currentPage: {
-        path: '/',
-        feature: 'home',
-    }
+    currentFeature: 'home',
 }
 
 export const pageSlice = createSlice({
@@ -15,7 +12,7 @@ export const pageSlice = createSlice({
             state.currentPage = action.payload
         },
         saveCurFeature: async (state, action) => {
-            state.currentPage.feature = action.payload
+            state.currentFeature = action.payload
         }
     }
 })

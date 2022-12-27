@@ -6,15 +6,15 @@ import {useSelector} from "react-redux";
 import CodeChat from "../../components/chatTypes/CodeChat";
 
 const ChatPage = () => {
-    const feature = useSelector(state => state.page.currentPage.feature)
+    const feature = useSelector(state => state.page.currentFeature)
 
     console.log(feature)
 
     return (
-        <Layout>
+        <Layout features={["BasicChat", "CodeChat"]}>
             <div id="app">
                 {
-                    feature !== 'codeChat' ? <BasicChat /> : <CodeChat />
+                    feature !== 'CodeChat' ? <BasicChat /> : <CodeChat />
                 }
             </div>
         </Layout>
