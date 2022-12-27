@@ -1,6 +1,7 @@
 import * as React from "react";
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom'
 import HomePage from "./pages/homepage/HomePage";
+import ChatPage from "./pages/chatpage/ChatPage";
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                     </div>
                 }/>
                 <Route path='/' element={<HomePage/>}/>
+                <Route path='/chat' element={<ChatPage/>}/>
                 {/*<Route path='/imgConverter' element={<HomePage/>}/>*/}
             </Routes>
         </Router>
