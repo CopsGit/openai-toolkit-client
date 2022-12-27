@@ -2,8 +2,12 @@ import * as React from "react";
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom'
 import HomePage from "./pages/homepage/HomePage";
 import ChatPage from "./pages/chatpage/ChatPage";
+import {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {saveCurFeature, saveCurrentPage} from "./redux/slice/pageSlice";
 
 function App() {
+
     return (
         <Router>
             <Routes>

@@ -16,10 +16,9 @@ const CodeChat = () => {
         element.textContent = ''
 
         loadInterval = setInterval(() => {
-            // Update the text content of the loading indicator
+
             element.textContent += '.';
 
-            // If the loading indicator has reached three dots, reset it
             if (element.textContent === '....') {
                 element.textContent = '';
             }
@@ -56,7 +55,6 @@ const CodeChat = () => {
             uniqueId: handleUid()
         }
 
-        // bot's chatstripe
         const uniqueId = handleUid()
         setUniqueId(uniqueId)
 
@@ -68,7 +66,6 @@ const CodeChat = () => {
 
         setChatData([...chatData, newChatMan, newChatBot])
 
-        // to focus scroll to the bottom
         chatRef.current.scrollTop = chatRef.current.scrollHeight
     }
 
@@ -126,7 +123,7 @@ const CodeChat = () => {
                     name="prompt"
                     rows="1"
                     cols="1"
-                    placeholder="Ask davinci..."
+                    placeholder="Ask codex..."
                     required
                     onChange={(e) => setInputValue(e.target.value)}
                     value={inputValue}
