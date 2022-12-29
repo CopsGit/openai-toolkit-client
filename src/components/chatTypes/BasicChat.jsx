@@ -50,7 +50,7 @@ const BasicChat = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const newChatMan =  {
+        const newChatMan = {
             isAi: false,
             value: inputValue,
             uniqueId: handleUid()
@@ -77,8 +77,6 @@ const BasicChat = () => {
             // specific message div
             const messageDiv = document.getElementById(uniqueId)
 
-            console.log(uniqueId,messageDiv)
-
             handleLoader(messageDiv)
 
             const response = await api.post('/chat', {
@@ -90,8 +88,6 @@ const BasicChat = () => {
 
             // to clear the textarea input
             setInputValue('')
-
-            console.log(response)
 
             if (response.status === 200) {
                 const data = await response.data;
@@ -129,10 +125,16 @@ const BasicChat = () => {
                         <h1>Hi, I'm a General Purpose Chatbot!</h1>
                         <p>Ask me anything</p>
                         <p>
-                            You can find useful examples <a href="https://www.learngpt.com/" target="_blank" rel="noreferrer" style={{textDecoration:'underline', color:'#fff'}}>HERE</a>
+                            You can find useful examples <a href="https://www.learngpt.com/" target="_blank"
+                                                            rel="noreferrer" style={{
+                            textDecoration: 'underline',
+                            color: '#fff'
+                        }}>HERE</a>
                         </p>
                         <p>
-                            OpenAi Model: <a href="https://beta.openai.com/docs/models/gpt-3" target="_blank" rel="noreferrer" style={{textDecoration:'underline', color:'#fff'}}>text-davinci-003</a>
+                            OpenAi Model: <a href="https://beta.openai.com/docs/models/gpt-3" target="_blank"
+                                             rel="noreferrer"
+                                             style={{textDecoration: 'underline', color: '#fff'}}>text-davinci-003</a>
                         </p>
                     </div>
                 }
@@ -142,7 +144,11 @@ const BasicChat = () => {
                     )
                 }
             </div>
-            <form onSubmit={handleSubmit} onKeyDown={(e) => {if (e.key === 'Enter') {handleSubmit(e).then()}}}>
+            <form onSubmit={handleSubmit} onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                    handleSubmit(e).then()
+                }
+            }}>
                 <textarea
                     name="prompt"
                     rows="1"

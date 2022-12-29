@@ -106,8 +106,6 @@ const SideBar = ({page, features}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
 
-    console.log("curPage", curPage);
-
     const handleDrawerOpen = () => {
         setOpen(true);
     };

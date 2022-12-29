@@ -74,8 +74,6 @@ const CodeChat = () => {
             // specific message div
             const messageDiv = document.getElementById(uniqueId)
 
-            console.log(uniqueId,messageDiv)
-
             handleLoader(messageDiv)
 
             const response = await api.post('/chat/code', {
@@ -87,8 +85,6 @@ const CodeChat = () => {
 
             // to clear the textarea input
             setInputValue('')
-
-            console.log(response)
 
             if (response.status === 200) {
                 const data = await response.data;

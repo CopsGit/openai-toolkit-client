@@ -24,8 +24,6 @@ const ImageVariation = () => {
             // Convert the image data to a 'Buffer' object
             const imageBuffer = Buffer.from(imageData);
 
-            console.log(imageBuffer)
-
             // Set the 'Buffer' object as the value of the 'imageData' state variable
             const response = await api.post('/text/imgEdit', {
                 image: imageBuffer
