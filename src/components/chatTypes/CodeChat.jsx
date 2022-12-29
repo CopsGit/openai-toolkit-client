@@ -113,7 +113,28 @@ const CodeChat = () => {
         <>
             <div id="chat_container" ref={chatRef}>
                 {
-                    chatData?.map((item, index) =>
+                    chatData.length === 0 &&
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        height: '100%',
+                        flexDirection: 'column',
+                        color: '#fff',
+                        gap: '1rem'
+                    }}>
+                        <h1>Hi, I'm a Code Chatbot!</h1>
+                        <p>Ask me anything about or with your code!</p>
+                        <p>
+                            You can find useful examples <a href="https://www.learngpt.com/" target="_blank" rel="noreferrer" style={{textDecoration:'underline', color:'#fff'}}>HERE</a>
+                        </p>
+                        <p>
+                            OpenAi Model: <a href="https://beta.openai.com/docs/models/codex" target="_blank" rel="noreferrer" style={{textDecoration:'underline', color:'#fff'}}>code-davinci-002</a>
+                        </p>
+                    </div>
+                }
+                {
+                    chatData.length > 0 && chatData?.map((item, index) =>
                         <ChatBlock key={index} isAi={item.isAi} value={item.value} uniqueId={item.uniqueId}/>
                     )
                 }

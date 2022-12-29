@@ -116,7 +116,28 @@ const BasicChat = () => {
         <>
             <div id="chat_container" ref={chatRef}>
                 {
-                    chatData?.map((item, index) =>
+                    chatData.length === 0 &&
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        height: '100%',
+                        flexDirection: 'column',
+                        color: '#fff',
+                        gap: '1rem'
+                    }}>
+                        <h1>Hi, I'm a General Purpose Chatbot!</h1>
+                        <p>Ask me anything</p>
+                        <p>
+                            You can find useful examples <a href="https://www.learngpt.com/" target="_blank" rel="noreferrer" style={{textDecoration:'underline', color:'#fff'}}>HERE</a>
+                        </p>
+                        <p>
+                            OpenAi Model: <a href="https://beta.openai.com/docs/models/gpt-3" target="_blank" rel="noreferrer" style={{textDecoration:'underline', color:'#fff'}}>text-davinci-003</a>
+                        </p>
+                    </div>
+                }
+                {
+                    chatData.length > 0 && chatData?.map((item, index) =>
                         <ChatBlock key={index} isAi={item.isAi} value={item.value} uniqueId={item.uniqueId}/>
                     )
                 }
