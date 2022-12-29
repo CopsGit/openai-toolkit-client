@@ -2,8 +2,10 @@ import React from 'react';
 import bot from "../../assets/bot.svg";
 import user from "../../assets/user.svg";
 import '../../pages/chatpage/chatPage.scss'
+import ReactMarkdown from 'react-markdown'
 
 const ChatBlock = ({isAi, value, uniqueId}) => {
+
     return (
         <div className={`wrapper ${isAi && 'ai'}`}>
             <div className="chat">
@@ -13,7 +15,9 @@ const ChatBlock = ({isAi, value, uniqueId}) => {
                         alt={isAi ? 'bot' : 'user'}
                     />
                 </div>
-                <div className="message" id={uniqueId}>{value}</div>
+                <div className="message" id={uniqueId}>
+                    <ReactMarkdown children={value} />
+                </div>
             </div>
         </div>
     );

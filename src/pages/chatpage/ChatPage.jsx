@@ -11,7 +11,7 @@ const ChatPage = () => {
     console.log(feature)
 
     return (
-        <Layout features={["BasicChat", "CodeChat"]}>
+        <Layout features={["Basic Chat", "Code Chat"]}>
             <div id="app">
                 {
                     feature !== 'CodeChat' ? <BasicChat /> : <CodeChat />

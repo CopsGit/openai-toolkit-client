@@ -5,6 +5,9 @@ import ChatPage from "./pages/chatpage/ChatPage";
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {saveCurFeature, saveCurrentPage} from "./redux/slice/pageSlice";
+import {Image} from "@mui/icons-material";
+import ImagePage from "./pages/imagePage/ImagePage";
+import AboutMe from "./pages/aboutme/AboutMe";
 
 function App() {
 
@@ -24,8 +27,11 @@ function App() {
                             alt=""/>
                     </div>
                 }/>
-                <Route path='/' element={<HomePage/>}/>
+                <Route path='/' element={<Navigate to= "/home"/>}/>
+                <Route path='/home' element={<HomePage/>}/>
                 <Route path='/chat' element={<ChatPage/>}/>
+                <Route path='/image' element={<ImagePage/>}/>
+                <Route path='/about' element={<AboutMe/>}/>
                 {/*<Route path='/imgConverter' element={<HomePage/>}/>*/}
             </Routes>
         </Router>

@@ -52,8 +52,6 @@ const TextToImg = () => {
         setText(text)
     }
 
-    console.log(images)
-
     return (
         <Grid>
             <Grid item display='flex'  gap={3}>
@@ -84,7 +82,7 @@ const TextToImg = () => {
                             Your description will be converted to image here
                         </Typography>
                         <Typography variant={"h5"}>Use the example below to get started</Typography>
-                        <Grid item direction="row" spacing={1} sx={{
+                        <Grid container direction="row" spacing={1} sx={{
                             display: 'flex', justifyContent: 'center',
                             alignItems: 'center', mt: 2, flexWrap: 'wrap'
                         }}>

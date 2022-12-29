@@ -20,6 +20,15 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import {useDispatch} from "react-redux";
 import {saveCurFeature} from "../../redux/slice/pageSlice";
+import HomeIcon from '@mui/icons-material/Home';
+import ChatIcon from '@mui/icons-material/Chat';
+import ImageIcon from '@mui/icons-material/Image';
+import {useNavigate} from "react-router-dom";
+import image_1 from "../../assets/one.svg";
+import image_2 from "../../assets/two.svg";
+import image_3 from "../../assets/three.svg";
+import image_4 from "../../assets/four.svg";
+import image_5 from "../../assets/five.svg";
 
 const drawerWidth = 240;
 
@@ -91,9 +100,13 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const SideBar = ({page, features}) => {
     const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(true);
     const [heading, setHeading] = useState(features[0]);
+    const curPage = window.location.pathname.split("/")[1];
     const dispatch = useDispatch();
+    const navigate = useNavigate()
+
+    console.log("curPage", curPage);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -102,6 +115,52 @@ const SideBar = ({page, features}) => {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    const handleBtmClick = (feature) => {
+        navigate(`/${feature.toLowerCase()}`);
+    }
+
+    const icons = (name) => {
+        switch (name) {
+            case "Home":
+                return <HomeIcon sx={{
+                    color: curPage === "home" ? "#fff" : "#707070",
+                }}/>
+            case "Chat":
+                return <ChatIcon
+                    sx={{
+                        color: curPage === "chat" ? "#fff" : "#707070",
+                    }}
+                />
+            case "Image":
+                return <ImageIcon
+                    sx={{
+                        color: curPage === "image" ? "#fff" : "#707070",
+                    }}
+                />
+            default:
+                return <HomeIcon
+                    sx={{
+                        color: curPage === "home" ? "primary.main" : "text.primary",
+                    }}
+                />
+        }
+    }
+
+    const order = (index) => {
+        switch (index) {
+            case 0:
+                return image_1;
+            case 1:
+                return image_2;
+            case 2:
+                return image_3;
+            case 3:
+                return image_4;
+            case 4:
+                return image_5;
+        }
+    }
 
     return (
         <Box sx={{ display: 'flex' }}>
@@ -133,17 +192,19 @@ const SideBar = ({page, features}) => {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {features?.map((text, index) => (
-                        <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+                    {['Home', 'Chat', 'Image'].map((text, index) => (
+                        <ListItem key={text} disablePadding sx={{
+                            display: 'block',
+                            backgroundColor: curPage === text.toLowerCase() ? '#1e8fff' : 'white',
+                            color: curPage === text.toLowerCase() ? 'white' : 'black',
+                        }}>
                             <ListItemButton
-                                onClick={e=>{
-                                    dispatch(saveCurFeature(text));
-                                }}
                                 sx={{
                                     minHeight: 48,
                                     justifyContent: open ? 'initial' : 'center',
                                     px: 2.5,
                                 }}
+                                onClick={e=>handleBtmClick(text)}
                             >
                                 <ListItemIcon
                                     sx={{
@@ -152,7 +213,7 @@ const SideBar = ({page, features}) => {
                                         justifyContent: 'center',
                                     }}
                                 >
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                    {icons(text)}
                                 </ListItemIcon>
                                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
                             </ListItemButton>
@@ -161,31 +222,38 @@ const SideBar = ({page, features}) => {
                 </List>
                 <Divider />
                 <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-                            <ListItemButton
+                {features?.map((text, index) => (
+                    <ListItem key={text} disablePadding sx={{ display: 'block',
+                    backgroundColor: heading === text ? '#1d89f5' : 'white',
+                    color: heading === text ? 'white' : 'black', }}>
+                        <ListItemButton
+                            onClick={e=>{
+                                setHeading(text);
+                            }}
+                            sx={{
+                                minHeight: 48,
+                                justifyContent: open ? 'initial' : 'center',
+                                px: 2.5,
+                            }}
+                        >
+                            <ListItemIcon
                                 sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
+                                    minWidth: 0,
+                                    mr: open ? 3 : 'auto',
+                                    justifyContent: 'center',
                                 }}
                             >
-                                <ListItemIcon
-                                    sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
-                                    }}
-                                >
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                </ListItemIcon>
-                                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
+                                <img height={25} src={order(index)} alt=""/>
+                            </ListItemIcon>
+                            <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                        </ListItemButton>
+                    </ListItem>
+                ))}
+            </List>
             </Drawer>
-            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+            <Box component="main" sx={{ flexGrow: 1, p: 3, display: 'flex'
+            , flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            }}>
                 <DrawerHeader />
                 {page}
             </Box>
