@@ -32,7 +32,6 @@ function App() {
                 <Route path='/chat' element={<ChatPage/>}/>
                 <Route path='/image' element={<ImagePage/>}/>
                 <Route path='/about' element={<AboutMe/>}/>
-                {/*<Route path='/imgConverter' element={<HomePage/>}/>*/}
             </Routes>
         </Router>
     );

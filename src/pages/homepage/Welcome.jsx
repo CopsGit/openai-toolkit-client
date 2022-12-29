@@ -1,5 +1,18 @@
 import React from 'react';
 import logo from '../../assets/favicon.svg';
+import {Grid, Paper} from "@mui/material";
+import Box from "@mui/material/Box";
+import styled from "@emotion/styled";
+
+const PageBlock = styled(Paper)(({theme}) => ({
+    width: '200px',
+    height: '150px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    fontWeight: 'bold',
+}))
 
 const Welcome = () => {
     return (
@@ -18,17 +31,23 @@ const Welcome = () => {
             <p style={{ fontSize: '18px' }}>
                 Some of the features you can expect to find in our toolkits include:
             </p>
-            <ul style={{ listStyle: 'none', display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
-                <li style={{ fontSize: '18px' }}>
-                    <a href="/chat" style={{ color: 'purple', textDecoration: 'none' }}>Chat</a>
-                </li>
-                <li style={{ fontSize: '18px' }}>
-                    <a href="/image" style={{ color: 'purple', textDecoration: 'none' }}>Image</a>
-                </li>
-                <li style={{ fontSize: '18px' }}>
-                    <a href="/about" style={{ color: 'purple', textDecoration: 'none' }}>About Us</a>
-                </li>
-            </ul>
+            <Grid container  sx={{ listStyle: 'none', display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
+                <a href="/chat" style={{color: 'purple', textDecoration: 'none'}}>
+                    <PageBlock elevation={3} >
+                        Chat
+                    </PageBlock>
+                </a>
+                <a href="/image" style={{color: 'purple', textDecoration: 'none'}}>
+                    <PageBlock elevation={3}>
+                        Image
+                    </PageBlock>
+                </a>
+                <a href="/about" style={{color: 'purple', textDecoration: 'none'}}>
+                    <PageBlock elevation={3}>
+                        About Us
+                    </PageBlock>
+                </a>
+            </Grid>
         </div>
     );
 };

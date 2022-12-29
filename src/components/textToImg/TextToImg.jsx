@@ -78,13 +78,13 @@ const TextToImg = () => {
                         border: '5px solid #808080', borderRadius: '15px',
                         display: 'flex', justifyContent: 'center', alignItems: 'center'
                     }}>
-                        <Typography variant={"h4"} mb={6}>
+                        <Typography variant={"h4"} mb={6} px={3}>
                             Your description will be converted to image here
                         </Typography>
                         <Typography variant={"h5"}>Use the example below to get started</Typography>
                         <Grid container direction="row" spacing={1} sx={{
                             display: 'flex', justifyContent: 'center',
-                            alignItems: 'center', mt: 2, flexWrap: 'wrap'
+                            alignItems: 'center', mt: 2, flexWrap: 'wrap', px: 3
                         }}>
                             {
                                 textToImgEx?.map((text, index) => (
