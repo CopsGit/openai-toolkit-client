@@ -8,13 +8,22 @@ import CodeChat from "../../components/chatTypes/CodeChat";
 const ChatPage = () => {
     const feature = useSelector(state => state.page.curFeature)
 
-    console.log(feature)
+    const curFeature = () => {
+        switch (feature) {
+            case "Basic Chat":
+                return <BasicChat/>
+            case "Code Chat":
+                return <CodeChat/>
+            default:
+                return <BasicChat/>
+        }
+    }
 
     return (
         <Layout features={["Basic Chat", "Code Chat"]}>
             <div id="app">
                 {
-                    feature !== 'Code Chat' ? <BasicChat /> : <CodeChat />
+                    curFeature()
                 }
             </div>
         </Layout>
