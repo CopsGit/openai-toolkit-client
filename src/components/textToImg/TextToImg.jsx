@@ -15,7 +15,7 @@ const TextToImg = () => {
     const handleConvert = async () => {
         setLoading(true);
         try{
-            const res = await api.post('/text/img',{
+            const res = await api.post('/img',{
                 description: text
             })
             setImages(res.data.info)
