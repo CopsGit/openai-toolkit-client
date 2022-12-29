@@ -1,25 +1,22 @@
 import {createSlice} from '@reduxjs/toolkit';
+import React from 'react';
 
 const initialState = {
-    currentFeature: 'home',
+    curFeature: "Home",
 }
 
 export const pageSlice = createSlice({
     name: 'page',
     initialState,
     reducers: {
-        saveCurrentPage: async (state, action) => {
-            state.currentPage = action.payload
+        saveCurFeature: (state, action) => {
+            state.curFeature = action.payload
         },
-        saveCurFeature: async (state, action) => {
-            state.currentFeature = action.payload
-        }
     }
 })
 
 export default pageSlice.reducer
 
 export const {
-    saveCurrentPage,
-    saveCurFeature
+    saveCurFeature,
 } = pageSlice.actions

@@ -7,5 +7,9 @@ export default configureStore({
     reducer: {
         auth: authReducer,
         page: pageReducer,
-    }
+    },
+    // middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    //     serializableCheck: false,
+    //     immutableCheck: false,
+    // })
 })

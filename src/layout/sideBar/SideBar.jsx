@@ -229,6 +229,7 @@ const SideBar = ({page, features}) => {
                         <ListItemButton
                             onClick={e=>{
                                 setHeading(text);
+                                dispatch(saveCurFeature(text));
                             }}
                             sx={{
                                 minHeight: 48,

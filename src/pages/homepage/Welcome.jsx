@@ -17,7 +17,7 @@ const PageBlock = styled(Paper)(({theme}) => ({
 const Welcome = () => {
     return (
         <div style={{ textAlign: 'center', maxWidth: '1000px' }}>
-            <h1 style={{ color: 'purple', fontSize: '36px' }}>Welcome to our website!</h1>
+            <h1 style={{ color: 'purple', fontSize: '36px' }}>Welcome to OpenAI toolkits!</h1>
             <img src={logo} alt="Logo" style={{ width: '200px', height: 'auto' }} />
             <p style={{ fontSize: '18px' }}>
                 Welcome to the OpenAI toolkits!
